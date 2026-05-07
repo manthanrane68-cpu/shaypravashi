@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "*.js": "javascript"
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "javascript.preferences.quoteStyle": "single",
+    "html.format.indentInnerHtml": true,
+    "css.format.indentSize": 2,
+    "html.format.indentSize": 2,
+    "javascript.format.indentSize": 2,
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.git": true,
+        "**/.DS_Store": true
+    }
+}

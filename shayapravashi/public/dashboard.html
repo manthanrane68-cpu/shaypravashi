@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Dashboard | Sahyapravashi</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+            .dashboard-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                font-family: 'TikTok Sans', sans-serif;
+            }
+
+            .dashboard-header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 30px;
+                border-radius: 15px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .dashboard-header h1 {
+                margin: 0;
+                font-size: 2.5rem;
+                font-weight: 700;
+            }
+
+            .dashboard-header p {
+                margin: 10px 0 0 0;
+                font-size: 1.1rem;
+                opacity: 0.9;
+            }
+
+            .dashboard-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .dashboard-card {
+                background: white;
+                border-radius: 15px;
+                padding: 25px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                border: 1px solid #e0e0e0;
+            }
+
+            .dashboard-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+
+            .card-icon {
+                font-size: 3rem;
+                margin-bottom: 15px;
+                color: #667eea;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            .card-description {
+                color: #666;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .card-button {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .card-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            }
+
+            .user-info {
+                background: #f8f9fa;
+                border-radius: 15px;
+                padding: 25px;
+                margin-bottom: 30px;
+                border-left: 5px solid #667eea;
+            }
+
+            .user-info h3 {
+                margin: 0 0 15px 0;
+                color: #333;
+                font-size: 1.3rem;
+            }
+
+            .user-details {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .user-detail {
+                background: white;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid #e0e0e0;
+            }
+
+            .user-detail strong {
+                color: #667eea;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .logout-btn {
+                background: #dc3545;
+                color: white;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                float: right;
+                margin-top: 20px;
+            }
+
+            .logout-btn:hover {
+                background: #c82333;
+                transform: translateY(-2px);
+            }
+
+            .quick-actions {
+                background: white;
+                border-radius: 15px;
+                padding: 25px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                margin-bottom: 30px;
+            }
+
+            .quick-actions h3 {
+                margin: 0 0 20px 0;
+                color: #333;
+                font-size: 1.4rem;
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .action-btn {
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .action-btn:hover {
+                background: #218838;
+                transform: translateY(-2px);
+            }
+
+            .action-btn.secondary {
+                background: #6c757d;
+            }
+
+            .action-btn.secondary:hover {
+                background: #5a6268;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="dashboard-container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1>🏰 Welcome to Sahyapravashi</h1>
+                <p>Your Fort Trekking Adventure Dashboard</p>
+            </div>
+
+            <!-- User Information -->
+            <div class="user-info">
+                <h3>👤 User Information</h3>
+                <div class="user-details">
+                    <div class="user-detail">
+                        <strong>Name:</strong>
+                        <span id="userName">Loading...</span>
+                    </div>
+                    <div class="user-detail">
+                        <strong>Email:</strong>
+                        <span id="userEmail">Loading...</span>
+                    </div>
+                    <div class="user-detail">
+                        <strong>Role:</strong>
+                        <span id="userRole">User</span>
+                    </div>
+                    <div class="user-detail">
+                        <strong>Member Since:</strong>
+                        <span id="memberSince">Today</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>⚡ Quick Actions</h3>
+                <div class="action-buttons">
+                    <a href="Forts.html" class="action-btn">🏰 Explore Forts</a>
+                    <a href="Payment.html" class="action-btn">📦 Book Trek</a>
+                    <a href="Contact.html" class="action-btn secondary">📞 Contact Us</a>
+                    <a href="About.html" class="action-btn secondary">ℹ️ About</a>
+                </div>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <div class="dashboard-grid">
+                <!-- Forts Card -->
+                <div class="dashboard-card">
+                    <div class="card-icon">🏰</div>
+                    <div class="card-title">Explore Forts</div>
+                    <div class="card-description">
+                        Discover the magnificent forts of Maharashtra. Learn about their history, difficulty levels, and
+                        plan your next adventure.
+                    </div>
+                    <a href="Forts.html" class="card-button">View Forts</a>
+                </div>
+
+                <!-- Bookings Card -->
+                <div class="dashboard-card">
+                    <div class="card-icon">📦</div>
+                    <div class="card-title">Book Trek</div>
+                    <div class="card-description">
+                        Book your next fort trekking adventure. Choose from various packages and plan your journey with
+                        us.
+                    </div>
+                    <a href="Payment.html" class="card-button">Book Now</a>
+                </div>
+
+                <!-- History Card -->
+                <div class="dashboard-card">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">My Bookings</div>
+                    <div class="card-description">
+                        View your booking history and track the status of your trek reservations.
+                    </div>
+                    <button class="card-button" onclick="viewBookings()">View Bookings</button>
+                </div>
+
+                <!-- Profile Card -->
+                <div class="dashboard-card">
+                    <div class="card-icon">👤</div>
+                    <div class="card-title">My Profile</div>
+                    <div class="card-description">
+                        Manage your profile information, update your details, and view your trekking statistics.
+                    </div>
+                    <button class="card-button" onclick="editProfile()">Edit Profile</button>
+                </div>
+
+                <!-- Support Card -->
+                <div class="dashboard-card">
+                    <div class="card-icon">🆘</div>
+                    <div class="card-title">Support</div>
+                    <div class="card-description">
+                        Get help with your bookings, ask questions about treks, or contact our support team.
+                    </div>
+                    <a href="Contact.html" class="card-button">Get Support</a>
+                </div>
+
+                <!-- About Card -->
+                <div class="dashboard-card">
+                    <div class="card-icon">ℹ️</div>
+                    <div class="card-title">About Sahyapravashi</div>
+                    <div class="card-description">
+                        Learn more about our mission to preserve heritage and provide amazing trekking experiences.
+                    </div>
+                    <a href="About.html" class="card-button">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Logout Button -->
+            <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        </div>
+
+        <script>
+            // Load user information
+            document.addEventListener('DOMContentLoaded', function () {
+                loadUserInfo();
+            });
+
+            function loadUserInfo() {
+                // Get user info from session or localStorage
+                const userEmail = localStorage.getItem('userEmail') || 'user@example.com';
+                const userName = localStorage.getItem('userName') || 'Adventure Seeker';
+
+                document.getElementById('userEmail').textContent = userEmail;
+                document.getElementById('userName').textContent = userName;
+                document.getElementById('userRole').textContent = 'User';
+                document.getElementById('memberSince').textContent = new Date().toLocaleDateString();
+            }
+
+            function viewBookings() {
+                alert('Your booking history will be displayed here. This feature will be available soon!');
+            }
+
+            function editProfile() {
+                alert('Profile editing feature will be available soon!');
+            }
+
+            function logout() {
+                if (confirm('Are you sure you want to logout?')) {
+                    // Clear user data
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userName');
+                    localStorage.removeItem('userRole');
+
+                    // Redirect to login
+                    window.location.href = 'Login.html';
+                }
+            }
+        </script>
+    </body>
+
+</html>
